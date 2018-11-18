@@ -49,6 +49,7 @@ export default class ReactCalendarTimeline extends Component {
 
     minZoom: PropTypes.number,
     maxZoom: PropTypes.number,
+    enableZoom: PropTypes.bool,
 
     clickTolerance: PropTypes.number,
 
@@ -503,7 +504,12 @@ export default class ReactCalendarTimeline extends Component {
   }
 
   changeZoom = (scale, offset = 0.5) => {
-    const { minZoom, maxZoom } = this.props
+    const { minZoom, maxZoom, enableZoom } = this.props
+    console.log('zoom', enableZoom)
+    if (enableZoom === false) {
+      console.log('zoom is disabled!')
+      return;
+    }
     const oldZoom = this.state.visibleTimeEnd - this.state.visibleTimeStart
     const newZoom = Math.min(
       Math.max(Math.round(oldZoom * scale), minZoom),
@@ -942,7 +948,8 @@ export default class ReactCalendarTimeline extends Component {
       sidebarWidth,
       rightSidebarWidth,
       timeSteps,
-      traditionalZoom
+      traditionalZoom,
+      enableZoom
     } = this.props
     const {
       draggingItem,
@@ -990,6 +997,7 @@ export default class ReactCalendarTimeline extends Component {
         canvasTimeStart={canvasTimeStart}
         canvasTimeEnd={canvasTimeEnd}
         canvasWidth={canvasWidth}
+        enableZoom={enableZoom}
       >
         <TimelineMarkersProvider>
           <div

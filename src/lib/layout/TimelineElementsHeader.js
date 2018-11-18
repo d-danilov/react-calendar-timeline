@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import moment from 'moment'
 
 import { iterateTimes, getNextUnit } from '../utility/calendar'
+import { TimelineStateConsumer } from '../timeline/TimelineStateContext';
 
 export default class TimelineElementsHeader extends Component {
   static propTypes = {
@@ -20,6 +21,8 @@ export default class TimelineElementsHeader extends Component {
     headerLabelHeight: PropTypes.number.isRequired,
     scrollHeaderRef: PropTypes.func.isRequired
   }
+
+  static contextType = TimelineStateConsumer
 
   constructor(props) {
     super(props)
@@ -89,6 +92,10 @@ export default class TimelineElementsHeader extends Component {
   }
 
   handlePeriodClick = (time, unit) => {
+    const { enableZoom } = this.context.getZoomState();
+    if (enableZoom === false) {
+      return;
+    }
     if (time && unit) {
       this.props.showPeriod(moment(time - 0), unit)
     }

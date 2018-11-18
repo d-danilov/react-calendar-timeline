@@ -37,7 +37,8 @@ export class TimelineStateProvider extends React.Component {
     visibleTimeEnd: PropTypes.number.isRequired,
     canvasTimeStart: PropTypes.number.isRequired,
     canvasTimeEnd: PropTypes.number.isRequired,
-    canvasWidth: PropTypes.number.isRequired
+    canvasWidth: PropTypes.number.isRequired,
+    enableZoom: PropTypes.bool
   }
 
   constructor(props) {
@@ -47,7 +48,8 @@ export class TimelineStateProvider extends React.Component {
       timelineContext: {
         getTimelineState: this.getTimelineState,
         getLeftOffsetFromDate: this.getLeftOffsetFromDate,
-        getDateFromLeftOffsetPosition: this.getDateFromLeftOffsetPosition
+        getDateFromLeftOffsetPosition: this.getDateFromLeftOffsetPosition,
+        getZoomState: this.getZoomState
       }
     }
   }
@@ -74,6 +76,10 @@ export class TimelineStateProvider extends React.Component {
       canvasWidth,
       leftOffset
     )
+  }
+
+  getZoomState = () => {
+    return { enableZoom: this.props.enableZoom };
   }
 
   render() {
