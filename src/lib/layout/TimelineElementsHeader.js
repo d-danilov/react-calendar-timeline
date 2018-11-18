@@ -216,7 +216,7 @@ export default class TimelineElementsHeader extends Component {
           >
             {
               subHeaderLabelRenderer &&
-              subHeaderLabelRenderer(bottomLabel) ||
+              subHeaderLabelRenderer({ label: bottomLabel, time, minUnit, labelWidth }) ||
               bottomLabel
             }
           </div>
