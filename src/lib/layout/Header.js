@@ -23,7 +23,8 @@ class Header extends Component {
     leftSidebarWidth: PropTypes.number,
     rightSidebarWidth: PropTypes.number,
     headerRef: PropTypes.func.isRequired,
-    scrollHeaderRef: PropTypes.func.isRequired
+    scrollHeaderRef: PropTypes.func.isRequired,
+    subHeaderLabelRenderer: PropTypes.func
   }
 
   render() {
@@ -47,7 +48,8 @@ class Header extends Component {
       leftSidebarHeader,
       rightSidebarHeader,
       leftSidebarWidth,
-      rightSidebarWidth
+      rightSidebarWidth,
+      subHeaderLabelRenderer
     } = this.props
 
     const headerStyle = {
@@ -98,7 +100,7 @@ class Header extends Component {
             headerLabelGroupHeight={headerLabelGroupHeight}
             headerLabelHeight={headerLabelHeight}
             scrollHeaderRef={scrollHeaderRef}
-
+            subHeaderLabelRenderer={subHeaderLabelRenderer}
           />
         </div>
         {rightSidebar}

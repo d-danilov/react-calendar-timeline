@@ -83,6 +83,8 @@ export default class ReactCalendarTimeline extends Component {
     itemRenderer: PropTypes.func,
     groupRenderer: PropTypes.func,
 
+    subHeaderLabelRenderer: PropTypes.func,
+
     style: PropTypes.object,
 
     keys: PropTypes.shape({
@@ -846,6 +848,7 @@ export default class ReactCalendarTimeline extends Component {
         rightSidebarWidth={this.props.rightSidebarWidth}
         leftSidebarHeader={this.props.sidebarContent}
         rightSidebarHeader={this.props.rightSidebarContent}
+        subHeaderLabelRenderer={this.props.subHeaderLabelRenderer}
       />
     )
   }
