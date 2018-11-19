@@ -13,7 +13,7 @@
     "start": "webpack-dev-server --hot --host 0.0.0.0 --display-modules",
     "test": "jest",
     "test:watch": "jest --watch",
-    "install": "npm run build"
+    "prepare": "npm run build"
   },
   "files": [
     "lib",
